@@ -1,53 +1,148 @@
 # Java Expression Calculator
 
-A command-line calculator written in Java that evaluates mathematical expressions entered by the user.
-The program supports operator precedence, parentheses, negative numbers, decimals, and exponentiation.
+![Java CI](https://github.com/Mena-Hanna/expression-calculator-java/actions/workflows/ci.yml/badge.svg)
 
-The calculator works by tokenizing the input expression, converting it from infix notation to postfix
-(RPN), and evaluating the postfix expression using a stack-based algorithm.
+A modular command-line expression calculator built in **Java 21** using **Maven**, **JUnit 5**, and **GitHub Actions CI**.
+
+The application evaluates mathematical expressions by:
+
+1. Tokenizing raw input  
+2. Converting infix notation to postfix (Reverse Polish Notation)  
+3. Executing stack-based evaluation  
+
+This project demonstrates clean project structure, automated testing, and continuous integration practices.
+
+---
+
+## Features
+
+- Supports operators: `+`, `-`, `*`, `/`, `^`
+- Handles nested parentheses
+- Supports negative numbers and decimal values
+- Correct operator precedence and associativity
+- Division-by-zero detection
+- JUnit 5 test suite
+- Continuous Integration via GitHub Actions
+- Automated JAR artifact generation
+
+---
 
 ## Example
 
-Input:
+### Input
+```text
 (8 + 2 * 5) - (9 / 3 + 4) ^ 3 + (6 * (7 - 2)) / 5
+```
 
-Output:
+### Output
+```text
 -319
+```
 
-## Features
-- Supports +, -, *, /, and ^ (exponentiation)
-- Handles nested parentheses
-- Supports negative numbers and decimal values
-- Ignores whitespace in input expressions
-- Correctly applies operator precedence
+---
 
-## Implementation Overview
-- **Tokenizer**: Breaks the input string into numbers, operators, and parentheses
-- **InfixChange**: Converts infix expressions to postfix notation using a stack
-- **PostfixEvaluation**: Evaluates postfix expressions using a stack-based approach
-- **CalculatorMain**: Handles user input and coordinates execution
+## Architecture
 
-## How to Run
+The calculator is structured into modular components:
 
-Compile and run:
-javac *.java
-java CalculatorMain
+### Tokenizer
+Parses the input string into numbers, operators, and parentheses.
+
+### InfixChange
+Converts infix expressions to postfix notation using a stack-based algorithm (Shunting Yard approach).
+
+### PostfixEvaluation
+Evaluates postfix expressions using stack-based execution.
+
+### CalculatorMain
+Handles user input and coordinates execution flow.
+
+---
+
+## Project Structure
+
+```text
+src/
+  main/java/com/mena/calculator
+  test/java/com/mena/calculator
+pom.xml
+```
+
+Built using **Java 21** and **Maven**.
+
+---
+
+## Build
+
+```bash
+mvn clean package
+```
+
+This generates a JAR file in:
+
+```text
+target/expression-calculator-1.0-SNAPSHOT.jar
+```
+
+---
+
+## Run
+
+Run using Maven:
+
+```bash
+mvn clean compile exec:java
+```
+
+Or run the generated JAR directly:
+
+```bash
+java -cp target/expression-calculator-1.0-SNAPSHOT.jar com.mena.calculator.CalculatorMain
+```
+
+---
+
+## Testing
+
+Run unit tests:
+
+```bash
+mvn test
+```
+
+Tests validate:
+
+- Operator precedence
+- Parentheses handling
+- Negative numbers
+- Decimal arithmetic
+- Invalid input handling
+- Division-by-zero detection
+
+All tests are automatically executed on every push via GitHub Actions CI.
+
+---
+
+## Continuous Integration
+
+This project uses GitHub Actions to:
+
+- Build the project
+- Run all unit tests
+- Generate a JAR artifact
+- Validate changes on every push
+
+CI status is shown at the top of this README.
+
+---
 
 ## Limitations
-- Unary minus directly before parentheses (e.g., -(3 + 2)) is not supported
 
-## Test Cases
+- Unary minus directly preceding parentheses (e.g., `-(3 + 2)`) is not currently supported.
 
-The project includes a `tests/test_cases.txt` file containing sample expressions and their expected outputs.
-These test cases were used to verify operator precedence, parentheses handling, negative numbers,
-decimals, and exponentiation.
-
-Example test cases:
-- `2 + 3 * 4` → `14`
-- `(2 + 3) * 4` → `20`
-- `2 ^ 3` → `8`
-- `3.5 * 2` → `7.0`
+---
 
 ## Author
-Mena Hanna  
-University of Georgia
+
+**Mena Hanna**  
+B.S. Computer Science — University of Georgia  

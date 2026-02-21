@@ -1,3 +1,4 @@
+package com.mena.calculator;
 import java.util.ArrayList;
 
 public class PostfixEvaluation {
@@ -22,7 +23,11 @@ public class PostfixEvaluation {
                 switch (current) {
                     case "^": evaluated = Math.pow(left, right); break;
                     case "*": evaluated = left * right; break;
-                    case "/": evaluated = left / right; break;
+                    case "/": 
+                        if (right == 0) {
+                            throw new IllegalArgumentException("division by zero");
+                        }
+                        evaluated = left / right; break;
                     case "+": evaluated = left + right; break;
                     case "-": evaluated = left - right; break;
                     default:

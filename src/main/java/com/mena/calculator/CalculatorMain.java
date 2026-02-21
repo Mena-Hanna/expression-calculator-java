@@ -1,3 +1,4 @@
+package com.mena.calculator;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class CalculatorMain {
         boolean ongoing = true;
         System.out.println("Welcome To The Calculator for Expressions!");
         System.out.println("Write down an expression without having any letters");
-        System.out.println("Ex: ((1+2*3/4) + 5 * 6) / 7 + 8");
+        System.out.println("Ex: ((1+2*3/4)^2 + 5 * 6) / 7 + 8");
         System.out.println("As you can see, spaces are irrelevant");
         System.out.println("Type Q to quit");
         while(ongoing){
